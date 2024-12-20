@@ -3,19 +3,13 @@ import Link from "next/link";
 
 import Container from "../../ui/Container";
 
-// import { getRecentPosts } from "@/src/services/RecentPosts";
-
-// import { IPost } from "@/src/types";
-// import Container from "@/src/components/UI/Container";
-// import Card from "@/src/components/UI/Card";
+import { getRecentPosts } from "@/src/services/RecentPosts";
+import { IPost } from "@/src/types";
+import Card from "@/src/components/UI/Card";
 
 export default async function RecentPosts() {
 
-    const res = await fetch("http://localhost:5000/api/v1/items?sortBy=-createdAt&limit=9")
-    
-    // eslint-disable-next-line no-console
-    console.log('data', await res.json())
-//   const { data: posts } = await getRecentPosts();
+  const { data: posts } = await getRecentPosts();
 
   return (
     <Container>
@@ -30,9 +24,9 @@ export default async function RecentPosts() {
         {/* {posts.map((post) => (
           <p>{post.title}</p>
         ))} */}
-        {/* {posts.map((post: IPost) => (
+        {posts.map((post: IPost) => (
           <Card key={post?._id} post={post} />
-        ))} */}
+        ))}
       </div>
       <div className="flex justify-center">
         <Button className="rounded-md bg-default-900 text-default" size="md">
