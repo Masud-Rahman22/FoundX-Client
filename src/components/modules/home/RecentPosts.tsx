@@ -4,8 +4,8 @@ import Link from "next/link";
 import Container from "../../ui/Container";
 
 import { getRecentPosts } from "@/src/services/RecentPosts";
-import { IPost } from "@/src/types";
-import Card from "@/src/components/UI/Card";
+// import { IPost } from "@/src/types";
+// import Card from "@/src/components/UI/Card";
 
 export default async function RecentPosts() {
 
@@ -24,9 +24,9 @@ export default async function RecentPosts() {
         {/* {posts.map((post) => (
           <p>{post.title}</p>
         ))} */}
-        {posts.map((post: IPost) => (
+        {/* {posts.map((post: IPost) => (
           <Card key={post?._id} post={post} />
-        ))}
+        ))} */}
       </div>
       <div className="flex justify-center">
         <Button className="rounded-md bg-default-900 text-default" size="md">
