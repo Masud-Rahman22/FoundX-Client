@@ -1,16 +1,12 @@
 "use client";
-
-import FXForm from "@/src/components/form/FXForm";
-
-import FXInput from "@/src/components/form/FXInput";
-
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import loginValidationSchema from "@/src/schemas/logoin.schema";
-
 import { FieldValues, SubmitHandler } from "react-hook-form";
+
+import FXForm from "@/src/components/form/FXForm";
+import FXInput from "@/src/components/form/FXInput";
+import loginValidationSchema from "@/src/schemas/login.schema";
 
 const LoginPage = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -23,8 +19,8 @@ const LoginPage = () => {
       <p className="mb-4">Welcome Back! Let&lsquo;s Get Started</p>
       <div className="w-[35%]">
         <FXForm
-          onSubmit={onSubmit}
           resolver={zodResolver(loginValidationSchema)}
+          onSubmit={onSubmit}
         >
           <div className="py-3">
             <FXInput label="Email" name="email"  type="email" />
