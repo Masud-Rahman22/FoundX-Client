@@ -40,23 +40,24 @@ export const loginUser = async (userData: FieldValues) => {
 //   cookies().delete("refreshToken");
 // };
 
-// export const getCurrentUser = async () => {
-//   const accessToken = cookies().get("accessToken")?.value;
+export const getCurrentUser = async () => {
+  const accessToken = cookies().get("accessToken")?.value;
 
-//   let decodedToken = null;
+  let decodedToken = null;
 
-//   if (accessToken) {
-//     decodedToken = await jwtDecode(accessToken);
-//     return {
-//       _id: decodedToken._id,
-//       name: decodedToken.name,
-//       email: decodedToken.email,
-//       mobileNumber: decodedToken.mobileNumber,
-//       role: decodedToken.role,
-//       status: decodedToken.status,
-//       profilePhoto: decodedToken.profilePhoto,
-//     };
-//   }
+  if (accessToken) {
+    decodedToken = await jwtDecode(accessToken);
+    
+    return {
+      _id: decodedToken._id,
+      name: decodedToken.name,
+      email: decodedToken.email,
+      mobileNumber: decodedToken.mobileNumber,
+      role: decodedToken.role,
+      status: decodedToken.status,
+      profilePhoto: decodedToken.profilePhoto,
+    };
+  }
 
-//   return decodedToken;
-// };
+  return decodedToken;
+};
