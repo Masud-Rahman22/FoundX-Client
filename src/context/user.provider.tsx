@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 
 import { IUser } from "../types";
 import { getCurrentUser } from "../services/AuthService";
@@ -36,6 +36,18 @@ const UserProvider = ({children}: {children : ReactNode}) =>{
             {children}
         </UserContext.Provider>
     );
+
+    
+}
+
+export const useUser = ()=>{
+    const context = useContext(UserContext)
+
+    if(context === undefined){
+        throw new Error("userUser maust be used within the UserProvider context")
+    } 
+
+    return context;
 }
 
 export default UserProvider;
