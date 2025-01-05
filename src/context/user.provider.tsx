@@ -27,7 +27,7 @@ const UserProvider = ({children}: {children : ReactNode}) =>{
 
     useEffect(()=>{
         handleUser()
-    },[])
+    },[isLoading])
 
     return (
         // eslint-disable-next-line react/self-closing-comp

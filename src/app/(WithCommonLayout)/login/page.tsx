@@ -11,15 +11,18 @@ import FXInput from "@/src/components/form/FXInput";
 import loginValidationSchema from "@/src/schemas/login.schema";
 import { useUserLogin } from "@/src/hooks/auth.hook";
 import Loading from "@/src/components/ui/Loading";
+import { useUser } from "@/src/context/user.provider";
 
 const LoginPage = () => {
   const searchParam = useSearchParams();
+  const {setIsLoading: userLoading} = useUser()
   const router = useRouter()
   const redirect = searchParam.get("redirect")
   const {mutate: handleUserLogin, isPending, isSuccess} = useUserLogin()
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     handleUserLogin(data);
+    userLoading(true)
   };
 
   useEffect(()=>{
