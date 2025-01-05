@@ -44,7 +44,7 @@ export const useUser = ()=>{
     const context = useContext(UserContext)
 
     if(context === undefined){
-        throw new Error("userUser maust be used within the UserProvider context")
+        throw new Error("useUser maust be used within the UserProvider context")
     } 
 
     return context;

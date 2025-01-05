@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider, ThemeProviderProps } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
+import UserProvider from "@/src/context/user.provider";
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -19,10 +20,12 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <UserProvider>
       <NextUIProvider navigate={router.push}>
         <Toaster />
         <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
       </NextUIProvider>
+      </UserProvider>
     </QueryClientProvider>
   );
 }
